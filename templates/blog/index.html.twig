@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    <script>
+        jQuery(function(){
+            $(function () {
+                $(window).scroll(function () { //Fonction appelée quand on descend la page
+                    if ($(this).scrollTop() > 200 ) {  // Quand on est à 200pixels du haut de page,
+                        $('#scrollUp').css('right','10px'); // Replace à 10pixels de la droite l'image
+                    } else { 
+                        $('#scrollUp').removeAttr( 'style' ); // Enlève les attributs CSS affectés par javascript
+                    }
+                });
+            });
+        });
+    </script>
+
+    <div class="container-figure">
+        <figure>
+            <figcaption>
+                <div class="container-title">
+                    <strong class="title">TITLE</strong>
+                    <p>Description</p>
+                </div>
+            </figcaption>
+            <img src="img1.jpg" alt="">
+        </figure>
+    </div>
+
+    <div class="container">
+        <section class="articles">
+            <h2 id="top">Les articles</h2>
+            <div class="row">
+                {% for article in articles %}
+                    <!--div class="col-lg-2"-->
+                    <div class="col-2_4" id="IndexPicture">
+                        <h2>{{ article.title }}</h2>
+                        {% if app.user %}
+                            <a href="{{ path('blog_edit', {'slug': article.slug}) }}"><img src="icone_modif_2.png"  alt="" style="margin: 10px;"></a>
+                            <a href="{{ path('blog_delete', {'slug': article.slug}) }}"><img src="icone_suppr_2.png"  alt=""></a>
+                        {% endif %}
+                        {% for photo in article.url |slice(0,1) %}
+                            <div class="col-2_4">
+                                <p><img class="smallImageHomePage" src="uploads/{{ photo.url }}" alt="">
+                                </p>
+                            </div>
+                        {% endfor %}
+                        <p>{{ article.content |slice(0,55)}}...</p>
+                        <a href=" {{ path('blog_show', {'slug': article.slug}) }} " class="btn btn-primary">Lire la suite</a>
+                        <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y')}} à {{ article.createdAt | date('H:i')}}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+<!--div id="scrollUp">
+<a href="#top"><img src="to_top.png"/></a>
+</div-->
+
+{% endblock %}

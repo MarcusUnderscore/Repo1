@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <div class="container">
+        {% if editMode %}
+            <h1>Modification d'un trick</h1>
+        {% else %} 
+            <h1>Création d'un trick</h1>
+        {% endif %}
+        {{ form_start(formArticle) }}
+            {{ form_row(formArticle.title, {'attr': {'placeholer': "Titre de l'article"} } ) }}
+            {{ form_row(formArticle.category) }}
+            {{ form_row(formArticle.content, {'attr': {'placeholer': "Contenu de l'article"} } ) }}
+            {{ form_row(formArticle.createdBy, {'attr': {'placeholer': "Autheur de l'article"} } ) }}
+
+            {% if editMode %}
+
+
+                <!--h2>TEST2 IL Y AURA LES PHOTOS ICI !!!!</h2-->
+
+            {% endif %}
+            
+
+                <div id="Scroll">
+                {% for photo in article.url %}
+                    <p>
+                        <a data-fancybox="gallery" href="{{ asset('/uploads/' ~ photo.url) }}">
+                            <img class="show_imag" src="{{ asset('/uploads/' ~ photo.url) }}" alt="" style="max-width: 300px">
+                            <a href=""><img src="../../icone_modif_2.png"  alt="" style="margin: 10px;"></a>
+                            <a href="{{ path('delete_photo', {id: photo.id}) }}"><img src="../../icone_suppr_2.png"  alt=""></a>
+                        </a>
+                    </p>
+
+                {% endfor %}
+                </div>
+
+
+
+           
+
+
+
+
+            <button type="submit" class="btn btn-success" style="top: 150px; position: relative;">
+                {% if editMode %}
+                    Enregistrer</button>
+                {% else %}    
+                    Ajouter l'article</button>
+                {% endif %}
+        {{ form_end(formArticle) }}
+
+
+        
+    </div>
+{% endblock %}

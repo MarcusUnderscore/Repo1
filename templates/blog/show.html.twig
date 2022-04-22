@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trick{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <article>
+            <h2>{{ article.title }}</h2>
+            <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y')}} à {{ article.createdAt | date('H:i')}} par {{ article.createdBy }} dans la catégorie {{ article.category.title }}</div><br/>
+            <div class="content">
+                <p>{{ article.content }}</p>
+            </div>
+        </article>
+        <section class="articles">
+            <div class="row" id="ShowPictures">
+
+                {% for photo in article.url|slice(0,1) %}
+                    <p><a data-fancybox="gallery" href=" {{ asset('/uploads/' ~ photo.url) }}">
+                        <img class="show_imag" src=" {{ asset('/uploads/' ~ photo.url) }}" alt="" style="max-width: 100%">
+                    </a></p>
+                {% endfor %}
+                <div id="Scroll">
+                    {% for photo in article.url|slice(1,99) %}
+                        <p><a data-fancybox="gallery" href=" {{ asset('/uploads/' ~ photo.url) }}">
+                            <img class="show_imag" src=" {{ asset('/uploads/' ~ photo.url) }}" alt="" style="max-width: 300px">
+                        </a></p>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </section>
+
+        <section id="commentaires">
+            <!--h1>{{ article.comments | length }} commentaires :</h1-->
+            <!-- Nouvelle partie ajoutée pour la pagination des commentaires -->
+            <h1> {{ comment.getTotalItemCount }} commentaires :</h1>
+                {# sorting of properties based on query components #}
+                <!--th>{{ knp_pagination_sortable(comment, 'Id', 'a.id') }}</th>
+                <th{% if comment.isSorted('a.Title') %} class="sorted"{% endif %}>
+                    {{ knp_pagination_sortable(comment, 'Title', 'a.title') }}
+                </th>
+                <th{% if comment.isSorted(['a.date', 'a.time']) %} class="sorted"{% endif %}>
+                    {{ knp_pagination_sortable(comment, 'Release', ['a.date', 'a.time']) }}
+                </th>
+                </tr-->
+                {# table body #}
+            {% for com in comment %}
+                <br><div class="comment">
+                    <div class="row">
+                        <div class="col-4"> 
+                            <img src="{{ com.user.image }}" alt="" style="width:50px; height:auto">
+                            {{ com.user.username }} (<small> {{ com.createdAt | date('d/m/Y à H:i') }}</small>)
+                        </div>
+                        <div class="col-8">
+                            {{ com.content }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+                    
+            {# display navigation #}
+            <div class="navigation">
+                {{ knp_pagination_render(comment) }}
+            </div>
+
+            <!---------
+            PARTIE AVEC LES COMMENTAIRES DE L ARTICLE NON PAGINES
+            -----------
+
+            {% for comment in article.comments %}
+            <br><div class="comment">
+                <div class="row">
+                    <div class="col-4"> 
+                        <img src="{{ comment.user.image }}" alt="" style="width:50px; height:auto">
+                            {{ comment.user.username }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }} </small>)
+                    </div>
+                    <div class="col-8">
+                        {{ comment.content | raw }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            -->
+
+            {% if app.user %}
+                {{ form_start(commentForm) }}
+                {{ form_row(commentForm.user ) }}
+                {{ form_row(commentForm.content, {'attr': {'placeholder': "Votre commentaire"}})}}
+                    <button type="submit" class="btn btn-success">Commenter</button>
+                {{ form_end(commentForm)}}
+            {% else %}
+                <h2>Vous ne pouvez pas commenter si vous n'etes pas connecté</h2>
+                <a href="{{path('security_login')}}" class="btn btn-primary">Connexion</a>
+            {% endif %}
+
+        </section>
+
+    </div>
+
+{% endblock %}
