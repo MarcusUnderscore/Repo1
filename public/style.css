@@ -1,0 +1,175 @@
+
+
+    #scrollUp {
+    position: fixed;
+    bottom : 80px;
+    right: 80px;
+    opacity: 0.5;
+    }
+
+
+    .col-2_4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+
+   
+    .col-2_4,
+    .col-sm-2_4,
+    .col-md-2_4,
+    .col-lg-2_4,
+    .col-xl-2_4,
+    .col-lg-2{
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        /*padding-right: 15px;
+        padding-left: 15px;*/
+    }
+
+    .ccontainer{ 
+        max-width: 1400px; 
+    } 
+
+    .row{
+        margin-left: 0!important;
+        margin-right: 0!important;
+    }
+
+
+/************************ HOMEPAGE *************************/
+
+
+    .container-figure figure img {
+        width: 100%;
+        height: 800px;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    /* annimation du haut du titre */
+    .container-figure figure figcaption .container-title .title {
+        padding: 5px;
+        font-size: 3.44em;
+        font-weight: bold;
+        font-variant: small-caps;
+        transition: transform .35s, -webkit-transform .35s;
+        -webkit-transform: translate3d(0, -20px, 0);
+        transform: translate3d(0, -20px, 0);
+    }
+
+    /* sert à afficher la deuxieme partie du titre */
+    .container-figure figure:hover .container-title .title, .container-figure figure:hover .container-title p {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .container-figure figure figcaption {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+
+    /* animation du titre */
+    .container-figure figure figcaption .container-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 5px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* animation du bas du titre */
+    .container-figure figure figcaption .container-title p {
+        padding: 5px;
+        font-size: 1.5em;
+        opacity: 0;
+        transition: opacity .35s,transform .35s,-webkit-transform .35s;
+        -webkit-transform: translate3d(0, 20px, 0);
+        transform: translate3d(0, 20px, 0);
+    }
+
+    .smallImageHomePage {
+        max-width: 200px;
+    }
+
+    /* Afficher uniquement la premiere image sur la page d'accueil */
+    body > div.container > section > div.row > div.col-2_4 > div.col-2_4:nth-child(1n+5){
+       /* display: none;*/
+    }
+
+   
+
+
+/************************************** TRICK PAGE ***************************************/
+
+    #Scroll{
+        overflow: scroll;
+        display: flex;
+        width: 100%;
+    }
+
+    #Scroll img {
+        max-height: 165px;
+    }
+
+    .show_imag {
+        margin-right: 15px;
+    }
+
+    /*.test {
+        background-color: blue;
+        width: 300px;
+        height: 300px;
+    }*/
+
+
+    /*body > div.container > section.articles > div > img {
+       max-width: 100%!important;
+    }*/
+
+
+/************************************** MEDIA QUERIES ***********************************/
+
+    @media (min-width: 540px) {
+        .col-sm-2_4 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
+    }
+
+    @media (min-width: 720px) {
+        .col-md-2_4 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
+    }
+
+    @media (min-width: 960px) {
+        .col-lg-2_4 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
+    }
+
+    @media (min-width: 1140px) {
+        .col-xl-2_4 {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
+    }
