@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 01 août 2021 à 16:59
+-- Généré le : ven. 22 avr. 2022 à 13:56
 -- Version du serveur :  5.7.31
--- Version de PHP : 5.6.40
+-- Version de PHP : 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `proj6`
+-- Base de données : `database`
 --
 
 -- --------------------------------------------------------
@@ -33,33 +33,29 @@ CREATE TABLE IF NOT EXISTS `article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `video` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_by` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `category_id` int(11) NOT NULL,
   `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_23A0E6612469DE2` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `article`
 --
 
-INSERT INTO `article` (`id`, `title`, `content`, `image`, `video`, `created_by`, `created_at`, `category_id`, `slug`) VALUES
-(15, 'Ollie', 'Le ollie est un bon trick de départ à apprendre pour les snowboarders freestyle. Tu utilises l’arrière de la planche pour décoller du sol, le trick est un peu le même qu\'en skateboard. On recommande d\'apprendre ce trick et de pratiquer, il peut être utile pour d\'autres tricks.', 'https://s2.qwant.com/thumbr/0x380/f/9/6c7ebfe0f7141aa1b45501c21df6dfe3fed6b298b558f57168ed1f08b182c3/ollie.jpg?u=https%3A%2F%2Fmas-magazine.com%2Fwp-content%2Fuploads%2F2018%2F08%2Follie.jpg&q=0&b=1&p=0&a=1', 'http://place-hold.it/350x150', 'Joris', '2021-03-26 22:30:13', 3, 'ollie'),
-(16, 'Nollie', 'Le nollie est un peu comme le ollie mais avec l\'avant de la planche, idéal pour commencer, on recommande de pratiquer ce trick très utile, l’idéal est de s\'entrainer sur terrain plat', 'https://s2.qwant.com/thumbr/0x0/6/9/48fc8e5ed6810514d3994372fe1ae735ff91a63c34e6a04f08400af0050b95/Nollie_pic3_large.jpg?u=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0230%2F2239%2Ffiles%2FNollie_pic3_large.jpg%3Fv%3D1559608492&q=0&b=1&p=0&a=1', 'http://place-hold.it/350x150', 'Joris', '2021-03-05 09:20:54', 3, ''),
-(17, 'Japan air', 'Pour ce trick il faut attraper la planche avec la main avant, et avoir les genoux pliés', 'https://s1.qwant.com/thumbr/0x0/0/c/cf442438b4743e5baf188709417f7f8d305d642c1141274eaab0899cb10f18/japan.jpg?u=https%3A%2F%2Fwww.risorseonline.com%2Ftutorial%2Fsnowboard%2Fjapan.jpg&q=0&b=1&p=0&a=1', 'http://place-hold.it/350x150', 'Joris', '2020-10-02 07:19:45', 1, ''),
-(19, 'Method', 'Un trick de base pour lequel il faut plier les genoux pour avoir la planche dans le dos du snowboarder, attention à replaquer  comme il faut', 'https://s2.qwant.com/thumbr/0x380/c/3/60fbde347c2effc5301fd00140ad016bb4798e1f36646b3b13e89c401283f0/snowboard_method_grab_by_torls.jpg?u=http%3A%2F%2Fimg07.deviantart.net%2F9dd5%2Fi%2F2008%2F191%2F4%2Fa%2Fsnowboard_method_grab_by_torls.jpg&q=0&b=1&p=0&a=', 'http://place-hold.it/350x150', 'Joris', '2021-02-12 01:39:03', 1, ''),
-(20, 'Cab 180', 'Tu as fait un trick 180 et tu avances avec le pied arrière devant, tu veux te remettre dans le bon sens, il suffit de faire un Cab 180, tu fais un jump et tu fais un demi tour sur toi même pour faire un 180', 'https://s1.qwant.com/thumbr/0x380/0/b/1c41a8c94c136851e26f17f9c3efc33a42592b243f07a17b506954b452cba2/47-620x413.jpg?u=https%3A%2F%2Fcoresites-cdn-adm.imgix.net%2Fwhitelines_new%2Fwp-content%2Fuploads%2F2013%2F09%2F47-620x413.jpg&q=0&b=1&p=0&a=1', 'http://place-hold.it/350x150', 'Joris', '2020-12-24 19:50:11', 3, ''),
-(21, 'Alley-Oop', 'Comme un albatros fainéant qui écarte ses ailes et s’envole gracieusement vers le ciel. Un trick de base dans le monde du superpipe et l’un des trick les plus esthétique que tu peux poser sur talus de board de piste.', 'https://s2.qwant.com/thumbr/0x380/6/f/93fe7ba24a24bd7274ace72389a7d1c57e9ddd0e6f98530aaf02a8488b070b/37-620x413.jpg?u=https%3A%2F%2Fcoresites-cdn-adm.imgix.net%2Fwhitelines_new%2Fwp-content%2Fuploads%2F2013%2F09%2F37-620x413.jpg&q=0&b=1&p=0&a=1', 'http://place-hold.it/350x150', 'Joris', '2021-01-06 11:31:39', 2, ''),
-(23, 'Air to Fakie', 'Le air-to-fakie iest un cousin du backside 180, mais avec quelques petites differences. Un des meilleurs tricks de halfpipe en snowboard', 'https://s2.qwant.com/thumbr/0x380/d/5/b254fc59ae59cb5273c933c0e4026fbbf12d672fd37aec7618ed602c75f82f/tj-schneider-air-to-fakie-main.jpg?u=https%3A%2F%2Fi1.wp.com%2Fwww.snowboarder.com%2Fwp-content%2Fuploads%2F2009%2F09%2Ftj-schneider-air-to-fakie-main.jpg', 'http://place-hold.it/350x150', 'Joris', '2021-01-09 20:17:16', 1, ''),
-(24, 'Stalefish', 'Le noble stalefish, c’est un grab pour toutes les occasions. Les hips, le pipe, les boards de piste, les sauts de barre ou les booters, tous ces terrains te donnent l’opportunité d’envoyer le Prince de tous les grabs. Si tu le tweak bien, que tu tends le bras vers le ciel et que ta board est perpendiculaire à la réception, c’est toujours magnifique.', 'https://s2.qwant.com/thumbr/0x0/f/0/1195d850d885429fc0a7e78ecdf87959303b2672dbb67518feef5eb6326205/Featured-2.jpg?u=https%3A%2F%2Fd2hl4mfiesch9e.cloudfront.net%2Fmporade_new%2Fwp-content%2Fuploads%2F2016%2F09%2FFeatured-2.jpg&q=0&b=1&p=0&a=1', 'http://place-hold.it/350x150', 'Joris', '2021-01-17 14:59:17', 1, ''),
-(25, 'Lipslide', 'LE rail trick de base à notre avis. Il n’y rien de plus beau qu’un lipslide avec tellement de tweak qu’il faut porter des lunettes de sécurité pour pas te décoller la rétine ! Avec ce trick, tu peux carrément te retrouver avec une de tes jambes plus haute que ta tête à certains moments', 'https://s1.qwant.com/thumbr/0x380/2/0/7d5abcdfc7af28793bf213adf4dc4a36b5e928f500f34e6df31c0d847d7805/laax-14-1024x683.jpg?u=http%3A%2F%2Fitsajudgeslife.co.uk%2Fwp-content%2Fuploads%2F2018%2F04%2Flaax-14-1024x683.jpg&q=0&b=1&p=0&a=1', 'http://place-hold.it/350x150', 'Joris', '2021-01-12 07:05:17', 2, ''),
-(26, 'Slash', 'Le slash est un signe de ponctuation dans un run. Tu peux voir le plus beau de tous les runs, sans un slash, il manque un truc. Comme pour le spray d’un cutback en surf, c’est la hauteur de ton slahs qui fait tout.', 'https://images.fineartamerica.com/images-medium-large-5/woman-powder-snowboarding-scott-markewitz.jpg', 'http://place-hold.it/350x150', 'Joris', '2021-01-23 03:23:36', 2, ''),
-(27, 'Test', 'test', 'https://images.fineartamerica.com/images-medium-large-5/woman-powder-snowboarding-scott-markewitz.jpg', 'https://images.fineartamerica.com/images-medium-large-5/woman-powder-snowboarding-scott-markewitz.jpg', 'Joris', '2021-07-25 19:14:20', 1, 'test'),
-(28, 'aaaaaaaa', 'aaaaa', 'http://aaaaaaa', 'aaaaaaa', 'aaaaaaaa', '2021-07-25 19:17:42', 1, 'aaaaaaaa');
+INSERT INTO `article` (`id`, `title`, `content`, `created_by`, `created_at`, `category_id`, `slug`) VALUES
+(15, 'Ollie', 'Le ollie est un bon trick de départ à apprendre pour les snowboarders freestyle. Tu utilises l’arrière de la planche pour décoller du sol, le trick est un peu le même qu\'en skateboard. On recommande d\'apprendre ce trick et de pratiquer, il peut être utile pour d\'autres tricks.', 'Admin', '2021-03-26 22:30:13', 3, 'ollie'),
+(16, 'Nollie', 'Le nollie est un peu comme le ollie mais avec l\'avant de la planche, idéal pour commencer, on recommande de pratiquer ce trick très utile, l’idéal est de s\'entrainer sur terrain plat', 'Admin', '2021-03-05 09:20:54', 3, 'nollie'),
+(17, 'Japan air', 'Pour ce trick il faut attraper la planche avec la main avant, et avoir les genoux pliés', 'Admin', '2020-10-02 07:19:45', 1, 'japan-air'),
+(19, 'Method', 'Un trick de base pour lequel il faut plier les genoux pour avoir la planche dans le dos du snowboarder, attention à replaquer  comme il faut', 'Admin', '2021-02-12 01:39:03', 1, 'method'),
+(20, 'Cab 180', 'Tu as fait un trick 180 et tu avances avec le pied arrière devant, tu veux te remettre dans le bon sens, il suffit de faire un Cab 180, tu fais un jump et tu fais un demi tour sur toi même pour faire un 180', 'Admin', '2020-12-24 19:50:11', 3, 'cab-180'),
+(21, 'Alley-Oop', 'Comme un albatros fainéant qui écarte ses ailes et s’envole gracieusement vers le ciel. Un trick de base dans le monde du superpipe et l’un des trick les plus esthétique que tu peux poser sur talus de board de piste.', 'Admin', '2021-01-06 11:31:39', 2, 'alley-oop'),
+(23, 'Air to Fakie', 'Le air-to-fakie iest un cousin du backside 180, mais avec quelques petites differences. Un des meilleurs tricks de halfpipe en snowboard', 'Admin', '2021-01-09 20:17:16', 1, 'air-to-fakie'),
+(24, 'Stalefish', 'Le noble stalefish, c’est un grab pour toutes les occasions. Les hips, le pipe, les boards de piste, les sauts de barre ou les booters, tous ces terrains te donnent l’opportunité d’envoyer le Prince de tous les grabs. Si tu le tweak bien, que tu tends le bras vers le ciel et que ta board est perpendiculaire à la réception, c’est toujours magnifique.', 'Admin', '2021-01-17 14:59:17', 1, 'stalefish'),
+(25, 'Lipslide', 'LE rail trick de base à notre avis. Il n’y rien de plus beau qu’un lipslide avec tellement de tweak qu’il faut porter des lunettes de sécurité pour pas te décoller la rétine ! Avec ce trick, tu peux carrément te retrouver avec une de tes jambes plus haute que ta tête à certains moments', 'Admin', '2021-01-12 07:05:17', 2, 'lipslide'),
+(26, 'Slash', 'Le slash est un signe de ponctuation dans un run. Tu peux voir le plus beau de tous les runs, sans un slash, il manque un truc. Comme pour le spray d’un cutback en surf, c’est la hauteur de ton slahs qui fait tout.', 'Admin', '2021-01-23 03:23:36', 2, 'slash');
 
 -- --------------------------------------------------------
 
@@ -100,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   PRIMARY KEY (`id`),
   KEY `IDX_9474526C7294869C` (`article_id`),
   KEY `IDX_9474526CA76ED395` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `comment`
@@ -148,7 +144,10 @@ INSERT INTO `comment` (`id`, `article_id`, `content`, `created_at`, `user_id`) V
 (103, 15, 'ghn cgv v', '2021-04-11 15:56:21', 2),
 (104, 15, 'bonjour', '2021-05-01 15:05:10', 2),
 (105, 16, 'Okkkkkkkkkkk', '2021-05-26 09:20:39', 2),
-(106, 15, 'Bonjour', '2021-06-26 07:23:05', 2);
+(106, 15, 'Bonjour', '2021-06-26 07:23:05', 2),
+(107, 15, 'Bonjour', '2021-08-21 12:19:28', 2),
+(108, 15, 'Test', '2021-09-02 11:21:57', 2),
+(109, 15, 'aaaaaa', '2021-09-03 10:54:04', 2);
 
 -- --------------------------------------------------------
 
@@ -189,67 +188,26 @@ CREATE TABLE IF NOT EXISTS `photos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `article_id` int(11) DEFAULT NULL,
   `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `grande` int(1) NOT NULL,
+  `grande` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_876E0D97294869C` (`article_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `photos`
 --
 
 INSERT INTO `photos` (`id`, `article_id`, `url`, `grande`) VALUES
-(1, 15, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(2, 15, 'https://www.businesscoot.com/uploads/study_main_image/786.jpg', 0),
-(3, 15, 'https://www.madmoizelle.com/wp-content/uploads/2013/02/snowboard.jpg', 1),
-(4, 15, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AnI7qGQs0Ic\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 0),
-(5, 16, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(6, 16, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(7, 16, 'https://www.businesscoot.com/uploads/study_main_image/786.jpg', 0),
-(8, 17, 'https://www.madmoizelle.com/wp-content/uploads/2013/02/snowboard.jpg', 0),
-(9, 17, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AnI7qGQs0Ic\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 0),
-(10, 17, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(11, 19, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(12, 19, 'https://www.businesscoot.com/uploads/study_main_image/786.jpg', 0),
-(13, 19, 'https://www.madmoizelle.com/wp-content/uploads/2013/02/snowboard.jpg', 0),
-(14, 20, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AnI7qGQs0Ic\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 0),
-(15, 20, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(16, 20, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(17, 21, 'https://www.businesscoot.com/uploads/study_main_image/786.jpg', 0),
-(18, 21, 'https://www.madmoizelle.com/wp-content/uploads/2013/02/snowboard.jpg', 0),
-(19, 21, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AnI7qGQs0Ic\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 0),
-(20, 23, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(21, 23, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(22, 23, 'https://www.businesscoot.com/uploads/study_main_image/786.jpg', 0),
-(23, 24, 'https://www.madmoizelle.com/wp-content/uploads/2013/02/snowboard.jpg', 0),
-(24, 24, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AnI7qGQs0Ic\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 0),
-(25, 24, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(26, 25, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(27, 25, 'https://www.businesscoot.com/uploads/study_main_image/786.jpg', 0),
-(28, 25, 'https://www.madmoizelle.com/wp-content/uploads/2013/02/snowboard.jpg', 0),
-(29, 26, '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AnI7qGQs0Ic\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', 0),
-(30, 26, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(31, 26, 'https://media.ucpa.com/image/upload/t_UCPA_Vertical/UCPA-SPORT-NATURE/France/00037016.jpg', 0),
-(32, 26, 'https://www.businesscoot.com/uploads/study_main_image/786.jpg', 0),
-(33, 27, 'https://images.fineartamerica.com/images-medium-large-5/woman-powder-snowboarding-scott-markewitz.jpg', 1);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `tricks`
---
-
-DROP TABLE IF EXISTS `tricks`;
-CREATE TABLE IF NOT EXISTS `tricks` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `video` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(47, 15, 'f762fe4c5d22d81751d7f1a696b82a6e.jpg', NULL),
+(53, 16, 'a6234cb66b1a296350737bac94d77926.jpg', NULL),
+(54, 17, '580f1ddcb6714e2b6fd6f22678dc0b00.jpg', NULL),
+(55, 19, '30c6791caed4a2c8f3b29f30d34b9432.jpg', NULL),
+(56, 20, '3839552acb359dcb4b497de1a67bdf04.jpg', NULL),
+(57, 21, '334237120b11e49ffa82544d95642ad6.jpg', NULL),
+(58, 23, '7d423f561274ad36daa2d63d4774ea9f.jpg', NULL),
+(59, 24, 'a07fd8f85d7c19fc4295fb3785d823ad.png', NULL),
+(60, 25, 'd1b6b5e03a8e0296c0f0d7aa800eaacf.jpg', NULL),
+(61, 26, 'dac28ff4da22afd9e093c6007abaa89f.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -272,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `username`, `password`, `image`) VALUES
-(2, 'contact@jorisreynes.fr', 'Joris', '$2y$13$eH.YbE9WiLxVNNnPoy9uyOEvcM3J7JhPjUurX/vnG8KLF1yLpZJxW', 'https://i.imgflip.com/2/ut9dy.jpg');
+(2, 'admin@gmail.com', 'Joris', '$2y$13$eH.YbE9WiLxVNNnPoy9uyOEvcM3J7JhPjUurX/vnG8KLF1yLpZJxW', 'https://i.imgflip.com/2/ut9dy.jpg');
 
 --
 -- Contraintes pour les tables déchargées
